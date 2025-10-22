@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-lavender to-ube text-gray-900 font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
+}
+
+/* ✨ Sparkle animation */
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: scale(0) translateY(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5) translateY(-4px);
+    opacity: 1;
+  }
+}
+.animate-sparkle {
+  animation: sparkle 0.8s ease-in-out infinite;
+}
+
+/* 🌟 Text Fade-In (no typing effect) */
+.typing-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .typing-container {
+    text-align: left;
+  }
+}
+
+.typing-line {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 1s ease forwards;
+  line-height: 1.8; /* tighter, balanced line spacing */
+  margin-bottom: 1; /* removes extra spacing */
+}
+
+.typing-line.delay-0 {
+  animation-delay: 0s;
+}
+.typing-line.delay-1 {
+  animation-delay: 0.4s;
+}
+.typing-line.delay-2 {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 640px) {
+  .typing-line {
+    font-size: 0.95rem;
+    white-space: normal;
+    line-height: 1.45;
+  }
+}
+
+/* 🌀 Rotations */
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-medium {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes rotate-fast {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-slower {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+.animate-rotate-medium {
+  animation: rotate-medium 25s linear infinite;
+}
+.animate-rotate-fast {
+  animation: rotate-fast 15s linear infinite;
+}
+.animate-rotate-slower {
+  animation: rotate-slower 30s linear infinite;
+}
+
+@keyframes bubble-float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50vh) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.animate-bubble-float {
+  animation-name: bubble-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* 💜 Aurora Flow */
+@keyframes ube-waves {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(30deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+}
+.animate-ube-waves {
+  background-size: 200% 200%;
+  animation: ube-waves 15s ease-in-out infinite;
+}
+@keyframes ube-glow {
+  0%,
+  100% {
+    opacity: 0.65;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.9;
+    filter: brightness(1.2);
+  }
+}
+.animate-ube-glow {
+  animation: ube-glow 6s ease-in-out infinite;
+}
+
+/* ✨ Bubble Float + Glow */
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(100vh) scale(0.6);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(50vh) scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-20vh) scale(1.2);
+    opacity: 0;
+  }
+}
+@keyframes bubbleGlow {
+  0%,
+  100% {
+    filter: brightness(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  }
+  50% {
+    filter: brightness(1.4) drop-shadow(0 0 25px rgba(255, 255, 255, 0.8));
+  }
+}
+.animate-bubble-glow {
+  animation: bubbleFloat linear infinite, bubbleGlow ease-in-out 3s infinite;
+}
+
+/* 🌊 Smooth scrolling motion */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 🖥️ Default scrolling speeds */
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.animate-scroll-fast {
+  animation: scroll 20s linear infinite;
+  will-change: transform;
+}
+
+/* 📱 Much faster on mobile */
+@media (max-width: 640px) {
+  .animate-scroll-fast {
+    animation-duration: 5s; /* ⚡ faster */
+  }
+}
+
+/* 🖱️ Pause on hover (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  .animate-scroll-fast:hover,
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Pulse */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
