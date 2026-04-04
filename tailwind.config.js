@@ -23,6 +23,17 @@ export default {
         heading: ["Quicksand", "sans-serif"],
         body: ["Lora", "serif"],
       },
+
+      // ✅ ADD THIS PART
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        "scroll-fast": "scroll 20s linear infinite",
+      },
     },
   },
 
